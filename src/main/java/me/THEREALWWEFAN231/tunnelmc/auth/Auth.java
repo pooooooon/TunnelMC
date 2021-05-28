@@ -39,7 +39,8 @@ public class Auth {
 		this.publicKey = (ECPublicKey) ecdsa256KeyPair.getPublic();
 		this.privateKey = (ECPrivateKey) ecdsa256KeyPair.getPrivate();
 		
-		Xbox xbox = new Xbox(System.getenv("XBOX_ACCESS_TOKEN"));
+		Xbox xbox = new Xbox(System.getProperty("XBOX_ACCESS_TOKEN"));
+
 		String userToken = xbox.getUserToken(this.publicKey, this.privateKey);
 		String deviceToken = xbox.getDeviceToken(this.publicKey, this.privateKey);
 		String titleToken = xbox.getTitleToken(this.publicKey, this.privateKey, deviceToken);
